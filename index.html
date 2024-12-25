@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/devicon@2.14.0/devicon.min.css" rel="stylesheet">
+    <title>Basel Mahmoud | Portfolio</title>
+</head>
+<body>
+   <!-- Hero Section -->
+<header id="hero">
+    <nav class="sticky-nav">
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="hero-content">
+        <h1>
+            I'm a <span>Full Stack Software Developer</span>.
+        </h1>
+        <a href="#portfolio" class="btn">Projects & Portfolio</a>
+    </div>
+</header>
+
+    <!-- About Me Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <img src="images/profile.jpg" alt="Your Profile Picture" class="profile-image">
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>
+                        I am a passionate and dedicated Full Stack Software Developer with expertise in developing robust
+                        desktop and mobile applications. My mission is to deliver innovative and efficient software
+                        solutions tailored to client needs.
+                    </p>
+                    <!-- Resume Button that triggers PDF download -->
+                    <a href="Basel Ibrahim FD.pdf" class="btn" target="_blank">Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+ <!-- Portfolio Section -->
+ <section id="portfolio" class="portfolio-section">
+    <div class="container">
+        <h2>Portfolio</h2>
+        <!-- Portfolio Category Navigation -->
+        <div class="portfolio-nav">
+            <button class="portfolio-tab active" onclick="showCategory('pc')">PC Projects</button>
+            <button class="portfolio-tab" onclick="showCategory('mobile')">Mobile Projects</button>
+            <button class="portfolio-tab" onclick="showCategory('web')">Web Projects</button>
+            <button class="portfolio-tab" onclick="showCategory('others')">Other Projects</button>
+        </div>
+        
+        <div class="portfolio-grid">
+            <!-- PC Projects (default shown) -->
+            <div class="portfolio-category pc">
+                <!-- PC Project 1 -->
+                <div class="portfolio-item">
+                    <img src="images/app1.jpg" alt="Solar Load Calculator Windows App">
+                    <div class="portfolio-content">
+                        <h3>Project 1</h3>
+                        <h4>Solar Load Calculator (Windows App)</h4>
+                        <p>A native Windows application built using C# to calculate solar load.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <!-- Add more PC projects here -->
+            </div>
+            
+            <!-- Mobile Projects -->
+            <div class="portfolio-category mobile" style="display: none;">
+                <!-- Mobile Project 1 -->
+                <div class="portfolio-item">
+                    <img src="images/app2.jpg" alt="Solar Load Calculator Android App">
+                    <div class="portfolio-content">
+                        <h3>Project 2</h3>
+                        <h4>Solar Load Calculator (Android App)</h4>
+                        <p>A native Android app for calculating solar load.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <!-- Add more Mobile projects here -->
+            </div>
+            
+            <!-- Web Projects -->
+            <div class="portfolio-category web" style="display: none;">
+                <!-- Web Project 1 -->
+                <div class="portfolio-item">
+                    <img src="images/app4.jpg" alt="Expense Tracker Web App">
+                    <div class="portfolio-content">
+                        <h3>Project 4</h3>
+                        <h4>Expense Tracker Web App</h4>
+                        <p>A web-based app to track personal expenses.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <!-- Add more Web projects here -->
+            </div>
+            
+            <!-- Other Projects -->
+            <div class="portfolio-category others" style="display: none;">
+                <!-- Other Project 1 -->
+                <div class="portfolio-item">
+                    <img src="images/app3.jpg" alt="Weather Forecast App">
+                    <div class="portfolio-content">
+                        <h3>Project 3</h3>
+                        <h4>Weather Forecast App</h4>
+                        <p>A mobile app that provides real-time weather updates.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <!-- Add more Other projects here -->
+            </div>
+        </div>
+    </div>
+</section>
+
+   <!-- Services Section -->
+<section id="services" class="services-section">
+    <div class="container">
+        <h2>Services</h2>
+        <div class="services-grid">
+            <!-- Service 1 -->
+            <div class="service-card">
+                <i class="fas fa-video"></i>
+                <h3>Video Streaming</h3>
+            </div>
+            <!-- Service 2 -->
+            <div class="service-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Mobile Apps</h3>
+            </div>
+            <!-- Service 3 -->
+            <div class="service-card">
+                <i class="fas fa-desktop"></i>
+                <h3>Web Development</h3>
+            </div>
+            <!-- Service 4 -->
+            <div class="service-card">
+                <i class="fas fa-code"></i>
+                <h3>Software Development</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+   <!-- Experience Section -->
+<section id="experience" class="experience-section">
+    <div class="container">
+        <h2>Experience</h2>
+        <div class="experience-icons">
+            <!-- Java Icon -->
+            <i class="fab fa-java"></i>
+            <!-- C++ Icon -->
+            <i class="devicon-cplusplus-plain"></i>
+            <!-- C# Icon -->
+            <i class="devicon-csharp-plain"></i>
+            <!-- HTML Icon -->
+            <i class="fab fa-html5"></i>
+            <!-- CSS Icon -->
+            <i class="fab fa-css3-alt"></i>
+        </div>
+    </div>
+</section>
+
+    <!-- Contact Section -->
+<section id="contact" class="contact-section">
+    <div class="container">
+        <h2>Contact</h2>
+        <p class="contact-description">
+            Let's get in touch! If you have any questions, feedback, or project inquiries, feel free to reach out. I'm always open to new opportunities and collaborations.
+        </p>
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required />
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send</button>
+                </form>
+    
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h3>Contact Details</h3>
+                    <p>Email: <a href="mailto:example@example.com">example@example.com</a></p>
+                    <p>Phone: <a href="tel:+123456789">+123 456 789</a></p>
+                    <p>Location: City, Country</p>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = '#151531'; /* Darker background when scrolling */
+            } else {
+                header.style.backgroundColor = '#0a0a23'; /* Original background color */
+            }
+        });
+    </script> 
+    <script>
+        function showCategory(category) {
+            // Hide all categories
+            const categories = document.querySelectorAll('.portfolio-category');
+            categories.forEach(category => {
+                category.style.display = 'none';
+            });
+    
+            // Show the selected category
+            const activeCategory = document.querySelector(`.${category}`);
+            activeCategory.style.display = 'block';
+    
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.portfolio-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+    
+            // Add active class to the clicked tab
+            const activeTab = document.querySelector(`button[onclick="showCategory('${category}')"]`);
+            activeTab.classList.add('active');
+        }
+    
+        // Initialize by showing PC projects by default
+        showCategory('pc');
+    </script>    
+</body>
+</html>

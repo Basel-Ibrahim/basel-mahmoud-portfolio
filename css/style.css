@@ -1,0 +1,540 @@
+/* General Reset */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #0a0a23;
+    color: #fff;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.btn {
+    background: #ff4c60;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+/* Header Section */
+#hero {
+    background-color: #0a0a23;
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), rgba(10, 10, 35, 0.9));
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+nav {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff4c60;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.hero-content h1 span {
+    color: #ff4c60;
+}
+
+.hero-content .btn {
+    background-color: #ff4c60;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.hero-content .btn:hover {
+    background-color: #ff2a40;
+}
+
+/* Optional: Add a subtle animation to the background text/logo if needed */
+#hero::before {
+    content: "SOFTWARE DEVELOPER";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10rem;
+    color: rgba(255, 255, 255, 0.05);
+    z-index: 0;
+    font-weight: 900;
+    text-transform: uppercase;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+#about, #portfolio, #services, #experience, #contact {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+/* About Me Section */
+.about-section {
+    background-color: #0a0a23;
+    color: #fff;
+    padding: 100px 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+}
+
+.profile-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #ff4c60;
+}
+
+.about-text {
+    max-width: 600px;
+    text-align: left;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ff4c60;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #d4d4e0;
+}
+
+.about-text .btn {
+    background-color: #ff4c60;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.about-text .btn:hover {
+    background-color: #ff2a40;
+}
+
+/* Portfolio Section */
+.portfolio-section {
+    background-color: #0a0a23;
+    color: #fff;
+    padding: 100px 20px;
+}
+
+.portfolio-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: #ff4c60;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Increased min-width for each box */
+    gap: 30px; /* Increased gap between items */
+    text-align: left;
+}
+
+.portfolio-item {
+    background: #1c1c39;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    width: 350px; /* Increased width */
+    height: 500px; /* Increased height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 250px; /* Increased image height */
+    object-fit: cover; /* Ensure image covers area without distortion */
+    transition: transform 0.3s;
+}
+
+.portfolio-item .portfolio-content {
+    padding: 20px 30px; /* Adjusted padding for larger boxes */
+    flex-grow: 1;
+    overflow: auto; /* Allow scroll if content overflows */
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-item .portfolio-content h3 {
+    font-size: 1.5rem; /* Increased heading size */
+    margin-bottom: 15px;
+    color: #ff4c60;
+    flex-shrink: 0; /* Prevent heading from shrinking */
+}
+
+.portfolio-item .portfolio-content p {
+    font-size: 1.1rem; /* Increased text size */
+    color: #d4d4e0;
+    flex-grow: 1; /* Ensure paragraph grows to take up available space */
+    margin-bottom: 15px;
+}
+
+.portfolio-item .portfolio-content .read-more {
+    margin-top: 15px;
+    font-size: 1rem; /* Adjusted size for the "read more" link */
+    color: #ff4c60;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Hover effect on portfolio items */
+.portfolio-item:hover {
+    transform: translateY(-10px);  /* Lift the item up when hovered */
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.05); /* Slight zoom effect for the image */
+}
+
+/* Button styling */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff4c60;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-top: 10px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect on button */
+.btn:hover {
+    background-color: #ff2a40;
+    transform: scale(1.1);  /* Slight zoom effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+}
+
+/* Portfolio Navigation */
+.portfolio-nav {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.portfolio-tab {
+    background-color: #1c1c39;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: background-color 0.3s ease;
+}
+
+.portfolio-tab:hover {
+    background-color: #ff4c60;
+}
+
+.portfolio-tab.active {
+    background-color: #ff4c60;
+    color: #fff;
+}
+
+.portfolio-category {
+    display: none;
+}
+
+/* Optional: Add transition for portfolio category visibility */
+.portfolio-category {
+    transition: opacity 0.5s ease;
+}
+
+/* Add some margin for better visual spacing */
+.portfolio-item {
+    margin-bottom: 30px;
+}
+
+/* Custom Scrollbar Styling for Portfolio Item Description */
+.portfolio-item .portfolio-content {
+    padding: 20px 30px;
+    flex-grow: 1;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Scrollbar Track */
+.portfolio-item .portfolio-content::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+/* Scrollbar Thumb */
+.portfolio-item .portfolio-content::-webkit-scrollbar-thumb {
+    background-color: #ff4c60; /* Color of the thumb */
+    border-radius: 10px; /* Rounded corners for the thumb */
+    border: 2px solid #1c1c39; /* Adds a border around the thumb */
+}
+
+/* Scrollbar Thumb on Hover */
+.portfolio-item .portfolio-content::-webkit-scrollbar-thumb:hover {
+    background-color: #e10f30; /* Darker shade of the thumb color on hover */
+}
+
+/* Scrollbar Track (background) */
+.portfolio-item .portfolio-content::-webkit-scrollbar-track {
+    background-color: #2a2a50; /* Background color of the scrollbar track */
+    border-radius: 10px;
+}
+
+/* Scrollbar Corner */
+.portfolio-item .portfolio-content::-webkit-scrollbar-corner {
+    background-color: #1c1c39;
+}
+
+/* Services Section */
+.services-section {
+    background-color: #0a0a23;
+    color: #fff;
+    padding: 100px 20px;
+}
+
+.services-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: #ff4c60;
+}
+
+.services-grid {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;  /* Ensure it wraps on smaller screens */
+    text-align: center;
+}
+
+.service-card {
+    background-color: #1c1c39;
+    padding: 30px;
+    border-radius: 5px;
+    width: 200px;  /* Fixed width for each card */
+    transition: transform 0.3s ease;
+}
+
+.service-card i {
+    font-size: 4rem; /* Increase icon size */
+    color: #ff4c60;
+    margin-bottom: 15px; /* Add space between icon and label */
+}
+
+.service-card h3 {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-top: 0;
+}
+
+.service-card:hover {
+    transform: translateY(-10px); /* Slight hover effect */
+}
+
+.service-card:hover i {
+    color: #ff2a40; /* Hover effect on the icon */
+}
+
+/* Experience Section */
+.experience-section {
+    background-color: #0a0a23;
+    color: #fff;
+    padding: 100px 20px;
+}
+
+.experience-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: #ff4c60;
+}
+
+.experience-icons {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;  /* Ensure it wraps on smaller screens */
+    text-align: center;
+}
+
+.experience-icons i {
+    font-size: 4rem;  /* Icon size */
+    color: #ff4c60;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.experience-icons i:hover {
+    color: #ff2a40;  /* Hover effect on icon color */
+    transform: scale(1.1);  /* Slight zoom effect */
+}
+
+/* Contact Section */
+.contact-section {
+    background-color: #0a0a23;
+    color: #fff;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ff4c60;
+}
+
+.contact-description {
+    font-size: 1.2rem;
+    margin: 0 auto;
+    max-width: 600px;
+    line-height: 1.6;
+    color: #d4d4e0;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.contact-description span {
+    color: #ff4c60;  /* Highlight any important keywords or calls to action */
+}
+
+/* Ensure the text is responsive */
+@media (max-width: 768px) {
+    .contact-description {
+        font-size: 1.1rem;
+        padding: 0 10px;
+    }
+}
+
+.contact-grid {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.contact-form {
+    width: 400px;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #1c1c39;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 15px;
+    background-color: #ff4c60;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #ff2a40;
+}
+
+.contact-info {
+    max-width: 400px;
+    text-align: left;
+}
+
+.contact-info p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #d4d4e0;
+}
+
+.contact-info .social-links a {
+    font-size: 2rem;
+    color: #ff4c60;
+    margin-right: 20px;
+}
+
+.contact-info .social-links a:hover {
+    color: #ff2a40;
+}
