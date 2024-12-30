@@ -5,7 +5,7 @@ const portfolioData = [
         category: "pc",
         title: "Solar Load Calculator",
         type: "Windows App",
-        description: "A native Windows application built using C# to calculate solar load.",
+        description: "A native Windows application built using C# and .NET Framework to calculate solar load with precision and reliability.",
         image: "images/app1.jpg"
     },
     {
@@ -13,33 +13,33 @@ const portfolioData = [
         category: "mobile",
         title: "Solar Load Calculator",
         type: "Android App",
-        description: "A native Android app for calculating solar load.",
+        description: "A native Android app developed with Java and Android Studio, offering offline functionality for solar load calculations.",
         image: "images/app2.jpg"
     },
     {
         id: "app3",
         category: "web",
-        title: "Expense Tracker Web App",
-        type: "Web App",
-        description: "A web-based app to track personal expenses.",
+        title: "Portfolio Website",
+        type: "Website",
+        description: "A responsive and professional portfolio website created using HTML, CSS, and JavaScript to showcase projects, skills, and achievements.",
         image: "images/app3.jpg"
     },
     {
-        id: "app5",
+        id: "app4",
         category: "web",
         title: "Government Bill Payment Website",
         type: "Web App",
-        description: "A website for paying government bills like electricity, water, and university tuition fees online.",
-        image: "images/app5.jpg"
+        description: "A user-friendly platform for paying utility bills online with features like bill tracking, payment history, and reminders.",
+        image: "images/app5.png"
     },
     {
-        id: "weather",
+        id: "app5",
         category: "others",
-        title: "Weather Forecast App",
-        type: "Mobile App",
-        description: "A mobile app that provides real-time weather updates.",
-        image: "images/app3.jpg"
-    }
+        title: "Twitch Channel Designs",
+        type: "Graphics",
+        description: "Custom Twitch channel designs, including overlays, banners, and icons, created with Adobe Photoshop for a professional look.",
+        image: "images/app6.jpg"
+    },
 ];
 
 // Function to Load Portfolio Items Dynamically
@@ -62,7 +62,7 @@ function loadPortfolio() {
         item.addEventListener('click', function() {
             const id = item.getAttribute('data-id');
             openModal(id);
-        });
+        });        
     });
 }
 
@@ -119,7 +119,6 @@ function clearSearch() {
     filterPortfolio();  // Optionally, you can reset the portfolio display
 }
 
-
 // Get elements
 const searchInput = document.getElementById('portfolioSearch');
 const clearButton = document.getElementById('clearSearch');
@@ -141,7 +140,6 @@ clearButton.addEventListener('click', function() {
     searchInput.value = '';
     toggleClearButton();  // Hide the button after clearing
 });
-
 
 // Initialize Portfolio on Page Load
 document.addEventListener('DOMContentLoaded', () => {
@@ -167,10 +165,17 @@ window.addEventListener('scroll', () => {
         }
 
         // Scroll to Top Button visibility
+        const scrollToTopButton = document.getElementById('scrollToTopBtn');
         if (window.scrollY > 200) {
-            document.getElementById('scrollToTopBtn').classList.add('show');
+            scrollToTopButton.classList.add('show');
+            scrollToTopButton.classList.remove('hide');
         } else {
-            document.getElementById('scrollToTopBtn').classList.remove('show');
+            if (scrollToTopButton.classList.contains('show')) {
+                scrollToTopButton.classList.add('hide');
+                setTimeout(() => {
+                    scrollToTopButton.classList.remove('show');
+                }, 500); // Match fadeOut animation duration
+            }
         }
     }, 100); // Delay scroll event to improve performance
 });
@@ -184,66 +189,279 @@ scrollToTopBtn.onclick = function() {
     });
 };
 
+document.addEventListener("DOMContentLoaded", function () {
+    const scrollToTopButton = document.querySelector(".scroll-to-top");
+    let isScrollingToTop = false; // Track if the page is scrolling to top
+
+    // Handle button click
+    scrollToTopButton.addEventListener("click", function () {
+        if (!isScrollingToTop) {
+            isScrollingToTop = true; // Set flag to prevent multiple triggers
+
+            // Play the click animation
+            scrollToTopButton.classList.add("click");
+
+            // Scroll to the top smoothly
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+
+            // Wait for the click animation to complete before hiding
+            scrollToTopButton.addEventListener(
+                "animationend",
+                function (e) {
+                    if (e.animationName === "clickEffect") {
+                        scrollToTopButton.classList.remove("click");
+                        scrollToTopButton.classList.add("hide"); // Trigger fadeOut
+                    }
+                },
+                { once: true } // Ensure listener is removed after execution
+            );
+
+            // Reset the scrolling flag after the scroll completes
+            const checkScroll = setInterval(() => {
+                if (window.scrollY === 0) {
+                    clearInterval(checkScroll);
+                    isScrollingToTop = false;
+                }
+            }, 100);
+        }
+    });
+
+    // Show or hide the button based on scroll position
+    window.addEventListener("scroll", function () {
+        if (!isScrollingToTop) {
+            if (window.scrollY > 200) {
+                scrollToTopButton.classList.add("show");
+                scrollToTopButton.classList.remove("hide");
+            } else {
+                scrollToTopButton.classList.remove("show");
+                scrollToTopButton.classList.add("hide");
+            }
+        }
+    });
+});
+
 // Typing Effect for Text
 const typingText = document.querySelector('.typing-text');
 const textToType = "Full Stack Software Developer";  // The text you want to type out
 let index = 0;
-let cursorVisible = true;
 
+// Function to handle typing
 function typeText() {
-    typingText.textContent += textToType.charAt(index);
-    index++;
-
-    // Toggle the cursor visibility
-    cursorVisible = !cursorVisible;
-    typingText.classList.toggle('cursor', cursorVisible);
-
     if (index < textToType.length) {
-        setTimeout(typeText, 100);  // Adjust typing speed here (in milliseconds)
+        typingText.textContent += textToType.charAt(index);
+        index++;
+        setTimeout(typeText, 100); // Adjust typing speed here
+    } else {
+        startCursorBlink(); // Start cursor blinking indefinitely after typing
     }
 }
+
+// Function for blinking cursor effect
+function startCursorBlink() {
+    setInterval(() => {
+        typingText.classList.toggle('cursor'); // Toggle cursor class for blinking effect
+    }, 500); // Adjust blink speed here
+}
+
+// Add blinking cursor style
+typingText.classList.add('cursor'); // Ensure the cursor is initially visible
 
 // Start typing when the page is loaded
 window.addEventListener('load', typeText);
 
-// Modal for Portfolio Item Details
 let modalIndex = 0;
-function openModal(id) {
-    const modal = document.getElementById('projectModal');
-    const modalBody = document.getElementById('modalBody');
-    const portfolioItem = portfolioData.find(item => item.id === id);
 
-    // Inject the content into the modal
-    modalBody.innerHTML = `
-        <h2>${portfolioItem.title}</h2>
-        <img src="${portfolioItem.image}" alt="${portfolioItem.title}" class="modal-image">
-        <p>${portfolioItem.description}</p>
-    `;
+// Example of portfolio data structure with images, platform, and description
+const portfolioModalData = [
+    {
+        id: "app1",
+        title: "Solar Load Calculator",
+        platform: "Windows",  // Platform added
+        description: `
+            <p>
+                <strong class="highlight">This native Windows application</strong> is designed to assist users in calculating 
+                the solar load for buildings and other structures. It provides precise and reliable results 
+                by allowing users to input variables such as <span class="highlight">location, time of year, and surface orientation</span>.
+            </p>
+            <p>
+                Developed for the <strong class="highlight">Solar Energy branch of the Arab International Optronic Company</strong> 
+                in Egypt, the app demonstrates advanced energy solutions tailored to regional needs. Debuting 
+                at the <em class="highlight">LED Expo 2024 in Egypt</em>, it showcases the company's commitment to cutting-edge technology.
+            </p>
+            <p>
+                Built using <strong class="highlight">C#</strong> and the <strong class="highlight">.NET Framework</strong>, the app ensures a seamless and responsive 
+                user experience. Ideal for architects, engineers, and energy management professionals, it features 
+                a clean interface and <span class="highlight">robust calculation algorithms</span> for accurate solar energy assessments.
+            </p>
+        `,
+        technologies: "C#, .NET Framework, Windows Forms",
+        images: ["images/app1-1.jpg", "images/app1-3.jpg", "images/app1-2.jpg"]
+    },
 
-    modalIndex = portfolioData.findIndex(item => item.id === id);
-    modal.style.display = 'block';
+    {
+        id: "app2",
+        title: "Solar Load Calculator",
+        platform: "Android",
+        description: `
+            <p>
+                <strong class="highlight">This native Android application</strong> offers a mobile-friendly solution for calculating 
+                solar loads anytime, anywhere. It was specifically developed for the <strong class="highlight">Solar Energy branch 
+                of the Arab International Optronic Company</strong> in Egypt to support their renewable energy initiatives.
+            </p>
+            <p>
+                Showcased at the <em class="highlight">prestigious LED Expo 2024 in Egypt</em>, the app highlights innovative solutions 
+                in solar energy management. Built with <strong class="highlight">Java</strong> and designed using <strong class="highlight">Android Studio</strong>, 
+                the app features an intuitive interface that allows users to input environmental and structural parameters easily.
+            </p>
+            <p>
+                Its <strong class="highlight">offline functionality</strong> ensures accessibility in remote areas, making it a reliable tool for professionals and enthusiasts.
+            </p>
+        `,
+        technologies: "Java, Android Studio",
+        images: ["images/app2-1.jpg", "images/app2-2.jpg", "images/app2-3.jpg", "images/app2-4.jpg"]
+    },
+
+    {
+        id: "app3",
+        title: "Portfolio Website",
+        platform: "Website",
+        description: `
+            <p>
+                This <strong class="highlight">Portfolio Website</strong> was created using HTML, CSS, and JavaScript. It is a professional and responsive platform 
+                designed to showcase personal or professional projects, skills, and achievements. It is the current website you are visiting, 
+                it demonstrates <span class="highlight">seamless navigation, a visually appealing design,</span> and optimized performance for a better user experience.
+            </p>
+        `,
+        technologies: "HTML, CSS, JavaScript",
+        images: ["images/iimage.png", "images/image.png", "images/image2.png", "images/image3.png"]
+    },
+
+    {
+        id: "app4",
+        title: "Government Bill Payment Website",
+        platform: "Web App",
+        description: `
+            <p>
+                This <strong class="highlight">Government Bill Payment Website</strong> simplifies the process of paying utility bills such as electricity, water, 
+                and university tuition fees online. The website supports <span class="highlight">credit card payments</span>, ensuring a secure and user-friendly 
+                experience. It provides features like bill tracking, payment history, and reminders to help users manage their obligations efficiently.
+            </p>
+            <p>
+                Designed for <span class="highlight">accessibility and ease of use</span>, the platform is ideal for streamlining essential financial transactions for users across Egypt.
+            </p>
+        `,
+        technologies: "Wordpress, Payment Gateway Integration",
+        images: ["images/app5-1.png", "images/app5-2.png", "images/app5-3.png", "images/app5-4.png", "images/app5-5.png", "images/app5-6.png"]
+    },
+
+    {
+        id: "app5",
+        title: "Twitch Channel Designs",
+        platform: "Graphics",
+        description: `
+            <p>
+                A set of <strong class="highlight">custom-designed graphics</strong> created using Photoshop to enhance my Twitch channel's branding. 
+                These include <span class="highlight">stream overlays, banners, and profile icons</span>, all tailored to provide a unique and professional appearance.
+            </p>
+            <p>
+                Each design reflects creativity and attention to detail, ensuring an engaging visual experience for the audience.
+            </p>
+        `,
+        technologies: "Adobe Photoshop",
+        images: ["images/app6-1.jpg", "images/app6-2.jpg", "images/app6-3.jpg"]
+    }
+];
+
+// Open Modal with Dynamic Images and Description
+function openModal(projectId) {
+    const modal = document.getElementById("projectModal");
+    const carouselContainer = document.getElementById("carouselImages");
+    const projectTitle = document.getElementById("projectTitle");
+    const projectDescription = document.getElementById("projectDescription");
+    const projectPlatform = document.getElementById("projectPlatform"); // New platform element
+
+    // Find the project data by ID
+    const project = portfolioModalData.find(item => item.id === projectId);
+
+    // Clear any existing content in the carousel and description
+    carouselContainer.innerHTML = '';
+    projectTitle.textContent = '';
+    projectDescription.innerHTML = ''; // Using innerHTML to support HTML content
+    projectPlatform.textContent = ''; // Clearing the platform text
+
+    // Add project data dynamically to the modal
+    if (project) {
+        // Set the project title and platform
+        projectTitle.textContent = project.title;
+        projectPlatform.textContent = `Platform: ${project.platform}`; // Display platform
+
+        // Add images dynamically to the carousel
+        project.images.forEach((src, index) => {
+            const img = document.createElement("img");
+            img.src = src;
+            img.alt = `Image ${index + 1}`;
+            img.className = "modal-image";
+            img.style.display = index === 0 ? "block" : "none"; // Show only the first image
+            carouselContainer.appendChild(img);
+        });
+
+        // Add project description (HTML content supported)
+        projectDescription.innerHTML = project.description;
+    }
+
+    // Show the modal with fade-in effect
+    modal.style.display = "block";
+    modal.classList.remove("fade-out");
+    modal.classList.add("fade-in");
+
+    // Disable scrolling on the body
+    document.body.style.overflow = "hidden";
+}
+
+// Show specific slide
+function showSlide(index) {
+    const images = document.querySelectorAll(".modal-image");
+    images.forEach((img, i) => {
+        img.style.display = i === index ? "block" : "none";
+    });
+}
+
+// Next Slide
+function nextSlide() {
+    const images = document.querySelectorAll(".modal-image");
+    modalIndex = (modalIndex + 1) % images.length; // Loop back to the first image
+    showSlide(modalIndex);
+}
+
+// Previous Slide
+function previousSlide() {
+    const images = document.querySelectorAll(".modal-image");
+    modalIndex = (modalIndex - 1 + images.length) % images.length; // Loop to the last image
+    showSlide(modalIndex);
 }
 
 // Close Modal
 function closeModal() {
-    const modal = document.getElementById('projectModal');
-    modal.style.display = 'none';
+    const modal = document.getElementById("projectModal");
+    modal.style.display = "none";
+    modal.classList.remove("fade-in");
+    modal.classList.add("fade-out");
+
+    // Enable scrolling on the body
+    document.body.style.overflow = "auto";
 }
 
-// Carousel Functionality for Modal (Previous and Next Buttons)
-function nextProject() {
-    modalIndex = (modalIndex + 1) % portfolioData.length; // Cycle back to first item after last
-    openModal(portfolioData[modalIndex].id);
-}
-
-function prevProject() {
-    modalIndex = (modalIndex - 1 + portfolioData.length) % portfolioData.length; // Cycle back to last item if at first
-    openModal(portfolioData[modalIndex].id);
-}
-
-// Add event listeners to modal navigation buttons (if you want to use buttons instead of image clicks)
-document.getElementById('nextBtn').addEventListener('click', nextProject);
-document.getElementById('prevBtn').addEventListener('click', prevProject);
+// Close Modal on Outside Click
+window.addEventListener("click", (event) => {
+    const modal = document.getElementById("projectModal");
+    const modalBody = document.getElementById("modalBody");
+    if (event.target === modal) {
+        closeModal();
+    }
+});
 
 // Form Submission with Fetch API
 const form = document.querySelector('.contact-form');

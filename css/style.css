@@ -71,7 +71,7 @@ a {
 }
 
 .typing-text::after {
-    content: '|';  /* This is the blinking cursor */
+    content: '_';  /* This is the blinking cursor */
     animation: blink 0.7s infinite step-end;  /* Blink animation */
 }
 
@@ -362,6 +362,7 @@ nav ul li a:hover {
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
+    width: 500px;
 }
 
 .portfolio-item img {
@@ -431,156 +432,267 @@ nav ul li a:hover {
 
 /* Modal Styles */
 #projectModal {
-    display: none;  /* Initially hidden */
+    display: none; /* Initially hidden */
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);  /* Semi-transparent background */
+    inset: 0; /* Fullscreen coverage */
+    background: rgba(0, 0, 0, 0.7); /* Dark overlay */
+    backdrop-filter: blur(10px); /* Adds blur effect */
     z-index: 1000;
-    overflow: auto;  /* Allow scrolling if content is large */
-    padding: 20px;
+    overflow-y: auto; /* Allow scrolling if content exceeds viewport */
+    animation: fadeIn 0.4s ease-out; /* Fade-in animation */
 }
 
+/* Modal Body */
 #modalBody {
-    background-color: #ffffff;
-    margin: 10% auto;
-    padding: 20px;
-    max-width: 800px;
-    position: relative;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background: #0a0a23;/* Gradient */
+    padding: 40px;
+    max-width: 1500px; /* Increased width */
+    position: absolute; /* Absolute positioning to center */
+    top: 50%; /* Position 50% from the top */
+    left: 50%; /* Position 50% from the left */
+    transform: translate(-50%, -50%); /* Center the modal body */
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     text-align: center;
+    color: #ffffff; /* White text for contrast */
+    max-height: 85vh; /* Increased height */
+    overflow-y: auto;
+    
+    /* Flexbox for centering content */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: flex-start; /* Start content from the top */
+    align-items: center; /* Center content horizontally */
 }
 
-/* Modal Image */
-.modal-image {
-    width: 100%;
-    height: auto;
-    max-width: 600px;
-    margin-bottom: 15px;
+/* Highlighted Text */
+.highlight {
+    color: #ff4c60; /* Vibrant solid color */
+    font-weight: bold; /* Bold for emphasis */
+    padding: 2px 4px; /* Adds padding around text */
+    border-radius: 4px; /* Rounded corners */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    transition: background-color 0.3s ease, text-shadow 0.3s ease; /* Smooth transitions */
+}
+
+/* Title Styling */
+#projectTitle {
+    font-size: 42px; /* Slightly larger for emphasis */
+    font-weight: 700; /* Extra bold */
+    color: #ffffff; /* Bright white text */
+    text-align: center; /* Center alignment */
+    margin-bottom: 20px; /* Space below the title */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Subtle shadow for depth */
+    border-bottom: 2px solid #ff4c60; /* Accent underline */
+    padding-bottom: 10px; /* Space between text and underline */
+}
+
+/* Platform Styling */
+#projectPlatform {
+    font-size: 20px; /* Slightly larger text */
+    font-weight: 600; /* Semi-bold */
+    color: #ff4c60; /* Accent color for platform */
+    background-color: rgba(255, 255, 255, 0.2); /* Light background for better visibility */
+    padding: 5px 10px; /* Adds padding for a badge-like appearance */
+    border-radius: 8px; /* Rounded corners */
+    display: inline-block; /* Ensures proper spacing around the text */
+    margin-bottom: 25px; /* Space below the platform text */
+    text-transform: uppercase; /* Capitalize text for a bold effect */
+    letter-spacing: 1px; /* Slight spacing for readability */
 }
 
 /* Close Button */
 #closeModal {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #ff4c4c;
-    color: white;
+    top: 15px; /* Spaced from top */
+    right: 15px; /* Spaced from right */
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.2); /* Subtle background */
     border: none;
-    padding: 10px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
-    font-size: 18px;
+    z-index: 1001; /* Ensures button is above modal content */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#closeModal::before,
+#closeModal::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 3px;
+    background-color: #fff; /* Matches modal colors */
     transition: background-color 0.3s ease;
+}
+
+#closeModal::before {
+    transform: rotate(45deg);
+}
+
+#closeModal::after {
+    transform: rotate(-45deg);
 }
 
 #closeModal:hover {
-    background-color: #ff1a1a;
+    background-color: rgba(255, 255, 255, 0.4); /* Hover effect */
+    transform: scale(1.1);
 }
 
-/* Carousel Buttons (Previous and Next) */
-#nextBtn, #prevBtn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
-    font-size: 24px;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 50%;
-    z-index: 10;
-    transition: background-color 0.3s ease;
-}
-
-#nextBtn:hover, #prevBtn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Positioning the Previous and Next buttons */
-#nextBtn {
-    right: 20px;
-}
-
-#prevBtn {
-    left: 20px;
-}
-
-/* Overlay (when modal is active) */
-body.modal-open {
-    overflow: hidden;  /* Prevent scrolling when modal is open */
+#closeModal:hover::before,
+#closeModal:hover::after {
+    background-color: #ff4c60; /* Matches gradient tones */
 }
 
 /* Modal Content Styling */
 #modalBody h2 {
-    font-size: 24px;
+    font-size: 36px; /* Larger heading */
     margin-bottom: 15px;
-    color: #333;
+    color: #ffffff; /* White text */
+    font-weight: bold;
 }
 
 #modalBody p {
-    font-size: 16px;
-    color: #666;
-    line-height: 1.5;
+    font-size: 20px; /* Slightly smaller text for better readability */
+    color: #ffffff;
+    line-height: 1.8;
     margin-bottom: 20px;
 }
 
-/* Styling for Carousel Modal Navigation */
-#projectModal .carousel-navigation {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: center;
+/* Platform Text */
+#projectPlatform {
+    font-size: 18px;
+    font-weight: 500;
+    color: #ff4c60; /* Accent color for platform */
+    margin-bottom: 20px;
 }
 
-.carousel-navigation button {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 0 5px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.carousel-navigation button:hover {
-    background-color: #f0f0f0;
-    border-color: #888;
-}
-
-/* Add cursor style for active elements in modal */
-#projectModal .cursor {
-    border-right: 2px solid #333;
-    animation: blink 0.7s infinite;
-}
-
-/* Blink Effect for Typing Cursor */
-@keyframes blink {
-    0% { border-color: transparent; }
-    50% { border-color: #333; }
-    100% { border-color: transparent; }
-}
-
-/* Button Container */
-.carousel-navigation {
-    display: flex;
-    justify-content: space-between;
+/* Modal Image */
+.modal-image {
     width: 100%;
+    height: 400px; /* Adjusted height */
+    max-width: 900px; /* Increased max-width for larger images */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    animation: fadeInImage 0.5s ease-in-out forwards;
+}
+
+/* Fade-in Animation for Images */
+@keyframes fadeInImage {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Title and Description */
+#projectTitle {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+#projectDescription {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+/* Carousel Buttons */
+#nextBtn,
+#prevBtn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 24px;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 1001;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Center Modal Content */
+#nextBtn:hover,
+#prevBtn:hover {
+    background-color: #ff4c60;
+}
+
+/* Add Click Animation on Carousel Buttons */
+#nextBtn:active,
+#prevBtn:active {
+    transform: scale(0.95); /* Button shrinks when clicked */
+}
+
+#nextBtn {
+    right: 20px; /* Positioned next to the image */
+}
+
+#prevBtn {
+    left: 20px; /* Positioned next to the image */
+}
+
+/* Modal Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
+
+/* Scrollbar Styles */
+#modalBody::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+    height: 10px; /* Height for horizontal scrollbar, if needed */
+}
+
+#modalBody::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #d32f2f, #512da8); /* Darker gradient */
+    border-radius: 10px; /* Rounded edges */
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6); /* Slightly stronger shadow */
+}
+
+#modalBody::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1); /* Subtle track color */
+    border-radius: 10px; /* Rounded edges */
+}
+
+#modalBody::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #c62828, #4527a0); /* Slightly brighter on hover */
+}
+
+#modalBody::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(45deg, #b71c1c, #311b92); /* Darker gradient on active state */
+}
+
+/* Firefox Scrollbar Styling */
 #modalBody {
-    text-align: center;
-    padding: 20px;
+    scrollbar-width: thin; /* Thin scrollbar */
+    scrollbar-color: #d32f2f rgba(255, 255, 255, 0.1); /* Darker thumb and subtle track */
 }
 
 /* Services Section */
@@ -759,70 +871,94 @@ body.modal-open {
 .contact-info .social-links a:hover {
     color: #ff2a40;
 }
+
 /* Scroll to Top Button Styling */
 .scroll-to-top {
     position: fixed;
-    bottom: 20px;      /* Distance from the bottom */
-    right: 20px;       /* Distance from the right */
-    background-color: #ff4c60;  /* Button color */
-    color: #fff;       /* Text color */
-    font-size: 2rem;    /* Font size */
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff4c60;
+    color: #fff;
+    font-size: 2rem;
     padding: 10px 20px;
     border-radius: 50%;
     border: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    display: none;      /* Initially hidden */
-    transition: all 0.3s ease-in-out;
+    opacity: 0;          /* Initially hidden (using opacity instead of display) */
+    visibility: hidden;  /* Make the button invisible */
+    transition: opacity 0.3s ease-in-out, visibility 0s 0.3s; /* smooth transition */
     text-align: center;
 }
 
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;   /* Make the button visible */
+    transition: opacity 0.3s ease-in-out, visibility 0s 0s; /* reset transition */
+}
+
+/* Hover effect */
 .scroll-to-top:hover {
-    background-color: #ff2a40;  /* Hover color */
-    transform: scale(1.1);      /* Slight scaling effect */
+    background-color: #ff2a40;
+    transform: scale(1.1);
 }
 
 .scroll-to-top:focus {
-    outline: none;   /* Remove focus outline */
+    outline: none;
 }
 
-/* Show the button when the user scrolls down 200px */
-.scroll-to-top.show {
-    display: block;
+/* Keyframe animation for showing the button */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Starts below */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);    /* Moves to its original position */
+    }
 }
+
+/* Keyframe animation for hiding the button (fade out to the bottom) */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);    /* Starts from the current position */
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px); /* Moves downward */
+    }
+}
+
+/* Apply fadeIn when the button becomes visible */
+.scroll-to-top.show {
+    animation: fadeIn 0.5s forwards; /* Animate fade-in */
+}
+
+/* Apply fadeOut when the button becomes hidden */
+.scroll-to-top.hide {
+    animation: fadeOut 0.5s forwards; /* Animate fade-out */
+}
+
+/* Keyframe animation for click effect */
+@keyframes clickEffect {
+    0% {
+        transform: scale(1); /* Normal size */
+    }
+    50% {
+        transform: scale(0.9); /* Slightly smaller for the "click" effect */
+    }
+    100% {
+        transform: scale(1); /* Back to normal size */
+    }
+}
+
+/* Apply the click animation */
+.scroll-to-top.click {
+    animation: clickEffect 0.3s ease-in-out;
+}
+
 html {
     scroll-behavior: smooth;
 }
-
-        /* Scroll to Top Button Styling */
-        .scroll-to-top {
-            position: fixed;
-            bottom: 20px;      /* Distance from the bottom */
-            right: 20px;       /* Distance from the right */
-            background-color: #ff4c60;  /* Button color */
-            color: #fff;       /* Text color */
-            font-size: 2rem;    /* Font size */
-            padding: 10px 20px;
-            border-radius: 50%;
-            border: none;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            display: none;      /* Initially hidden */
-            transition: all 0.3s ease-in-out;
-            text-align: center;
-        }
-
-        .scroll-to-top:hover {
-            background-color: #ff2a40;  /* Hover color */
-            transform: scale(1.1);      /* Slight scaling effect */
-        }
-
-        .scroll-to-top:focus {
-            outline: none;   /* Remove focus outline */
-        }
-
-        /* Show the button when the user scrolls down 200px */
-        .scroll-to-top.show {
-            display: block;
-        }
-

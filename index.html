@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"> <!-- Swiper CSS -->
     <title>Basel Mahmoud | Portfolio</title>
 </head>
+
 <body>
     <!-- Include JavaScript file at the end for performance -->
     <script src="scripts.js" defer></script>
@@ -66,13 +67,14 @@
                 <input type="text" id="portfolioSearch" placeholder="Search projects..." onkeyup="filterPortfolio()" aria-label="Search for projects">
                 <button type="button" id="clearSearch" aria-label="Clear search" onclick="clearSearch()">×</button>
             </div>
+            
             <div class="portfolio-filters">
                 <button class="filter-btn active" onclick="filterCategory(event, 'all')" aria-label="Show all projects">All</button>
                 <button class="filter-btn" onclick="filterCategory(event, 'pc')" aria-label="Show PC projects">PC Projects</button>
                 <button class="filter-btn" onclick="filterCategory(event, 'mobile')" aria-label="Show mobile projects">Mobile Projects</button>
                 <button class="filter-btn" onclick="filterCategory(event, 'web')" aria-label="Show web projects">Web Projects</button>
                 <button class="filter-btn" onclick="filterCategory(event, 'others')" aria-label="Show other projects">Other Projects</button>
-            </div>            
+            </div>
         </div>
 
         <!-- Portfolio Grid -->
@@ -80,16 +82,32 @@
             <!-- Portfolio Items will be dynamically loaded -->
         </div>
 
-        <!-- Modal for Project Details -->
-        <div id="projectModal" class="modal" role="dialog" aria-labelledby="projectModalLabel" aria-hidden="true">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal()" aria-label="Close modal">&times;</span>
-                <div id="modalBody">
-                    <!-- Content will be injected dynamically via JavaScript -->
-                </div>
-            </div>
+<!-- Modal for Project Details -->
+<div id="projectModal" class="modal" role="dialog" aria-labelledby="projectModalLabel" aria-hidden="true">
+    <div class="modal-content">
+        <div id="modalBody">
+            <!-- Close Button -->
+            <button id="closeModal" onclick="closeModal()" aria-label="Close modal"></button>
+            
+            <!-- Project Title -->
+            <h2 id="projectTitle"></h2>
+
+            <!-- Platform -->
+            <p id="projectPlatform"></p> <!-- Platform Display -->
+
+            <!-- Images will be dynamically added here -->
+            <div class="carousel-images" id="carouselImages"></div>
+
+            <!-- Project Description -->
+            <div id="projectDescription"></div> <!-- Description Display -->
+
+            <!-- Navigation Buttons -->
+            <button id="prevBtn" onclick="previousSlide()">&#8249;</button>
+            <button id="nextBtn" onclick="nextSlide()">&#8250;</button>
         </div>
     </div>
+</div>
+
 </section>
 
    <!-- Services Section -->
