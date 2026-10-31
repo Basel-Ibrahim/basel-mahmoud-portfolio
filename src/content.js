@@ -9,7 +9,7 @@ export const SITE = {
 export const SECTIONS = [
   { key: 'build', id: 'work', band: 'band-white' },
   { key: 'grow', id: 'growth', band: 'band-lilac' },
-  { key: 'grad', id: 'graduation', band: 'band-white' },
+  { key: 'side', id: 'side', band: 'band-white' },
 ]
 
 export const projectMeta = [
@@ -24,7 +24,7 @@ export const projectMeta = [
     id: 'planner',
     section: 'build',
     accent: '#C9B2FF',
-    url: 'https://socialist.agency/planner',
+    url: null,
     images: [{ file: 'planner-login', w: 1400, h: 875 }],
   },
   {
@@ -41,7 +41,7 @@ export const projectMeta = [
     id: 'rfhub',
     section: 'build',
     accent: '#FFC93C',
-    url: 'https://ops.reachflexhub.com',
+    url: null,
     images: [
       { file: 'rf-overview', w: 1400, h: 875 },
       { file: 'rf-schedule', w: 1400, h: 875 },
@@ -91,7 +91,7 @@ export const projectMeta = [
   },
   {
     id: 'souqna',
-    section: 'grad',
+    section: 'side',
     accent: '#FF8A7A',
     url: 'https://141-144-244-145.sslip.io',
     images: [
@@ -102,7 +102,7 @@ export const projectMeta = [
   },
   {
     id: 'careerpath',
-    section: 'grad',
+    section: 'side',
     accent: '#8FB8FF',
     url: 'https://careerpath.141-144-244-145.sslip.io',
     images: [
@@ -118,7 +118,7 @@ export const archiveMeta = [{ id: 'solar-win', file: 'solar-windows', accent: '#
 export const copy = {
   en: {
     meta: { title: 'Basel Ibrahim | CTO, Socialist Agency & ReachFlex' },
-    nav: { work: 'Work', graduation: 'Graduation', about: 'About', archive: 'Earlier', contact: 'Contact', toggle: 'عربي', toggleLabel: 'Switch to Arabic' },
+    nav: { work: 'Work', side: 'Side projects', about: 'About', archive: 'Earlier', contact: 'Contact', toggle: 'عربي', toggleLabel: 'Switch to Arabic' },
     hero: {
       tags: ['CTO · Socialist Agency', 'CTO · ReachFlex'],
       title: ['Two companies.', 'One CTO.', 'Built in-house.'],
@@ -132,7 +132,7 @@ export const copy = {
     sections: {
       build: { title: 'Built and run.' },
       grow: { title: 'Launched and grown.' },
-      grad: { title: 'Graduation projects.', sub: 'Business Information Systems, 2026/27. Two full products with live demos and written reports.' },
+      side: { title: 'Side projects.', sub: 'Two products I built on my own time and am working on taking commercial.' },
     },
     ui: { thumbsLabel: 'Screenshots' },
     projects: {
@@ -150,7 +150,6 @@ export const copy = {
         role: 'CTO · Internal dashboard',
         text: 'The dashboard the whole team works in every day: content calendar, client pipeline, ideas, approvals, invoices, budget, revenue, analytics and a blog editor. Access is set per person and updates appear live for everyone.',
         tags: ['React 19', 'Supabase auth', 'Realtime'],
-        link: 'socialist.agency/planner',
         note: 'The sign-in screen. The planner is an internal tool, so its screens are not public.',
         alts: ['Socialist Planner sign-in screen'],
       },
@@ -168,14 +167,13 @@ export const copy = {
         role: 'CTO · Designed and built',
         text: 'Operations dashboard for the same company: staffing schedule, agent roster, account SLAs, QA and CSAT, sales pipeline, seat-based invoicing and monthly PDF reports. Access is set per user and per page.',
         tags: ['React 19', 'Supabase', 'Row-level security'],
-        link: 'Open the preview',
         note: 'Screenshots use sample data.',
         alts: ['ReachFlex Ops Hub overview with account cards', 'ReachFlex Ops Hub staffing schedule grid'],
       },
       checkengine: {
         title: 'CheckEngine',
-        role: 'Technical lead · Security and launch',
-        text: 'Roadside assistance and car maintenance for Egypt, Arabic first, launching in November 2026. Customers use a web app and a Flutter app. Staff run requests, providers, invoices, cashback and roles from an Arabic and English admin dashboard. I took it to production on Cloudflare, ran the security pass (CSP, HSTS, token and role checks, rate limits), led the web and mobile parity work and wrote the privacy policy and terms. Built with three other engineers.',
+        role: 'CTO · Technical lead',
+        text: 'A Socialist Agency product: roadside assistance and car maintenance for Egypt, Arabic first, launching in November 2026. Customers use a web app and a Flutter app. Staff run requests, providers, invoices, cashback and roles from an Arabic and English admin dashboard. I took it to production on Cloudflare, ran the security pass (CSP, HSTS, token and role checks, rate limits), led the web and mobile parity work and wrote the privacy policy and terms. Built with three other engineers.',
         stats: [
           ['143+', 'real requests so far'],
           ['2', 'languages, RTL first'],
@@ -229,10 +227,10 @@ export const copy = {
       },
       souqna: {
         title: 'Souqna',
-        role: 'Graduation project · BIS 2026/27',
-        text: 'A smart local marketplace for small businesses and home-based sellers, in Arabic and English. New sellers submit a national ID that is stored encrypted and reviewed on an admin approve or reject screen, then finish a three-step store setup before they can sell. Built on WordPress, WooCommerce and Dokan, with a 186-page project report.',
+        role: 'Side project · Built end to end',
+        text: 'A smart local marketplace for small businesses and home-based sellers, in Arabic and English. New sellers submit a national ID that is stored encrypted and reviewed on an admin approve or reject screen, then finish a three-step store setup before they can sell. Built on WordPress, WooCommerce and Dokan.',
         stats: [
-          ['186', 'report pages'],
+          ['3', 'step seller setup'],
           ['EN + AR', 'full RTL'],
         ],
         tags: ['WordPress', 'WooCommerce', 'Dokan', 'Docker'],
@@ -242,8 +240,8 @@ export const copy = {
       },
       careerpath: {
         title: 'CareerPath',
-        role: 'Graduation project · BIS 2026/27',
-        text: 'Upload an Arabic or English CV and get a parsed profile, a quality score, an AI rewrite, a percentage fit across 14 career tracks and ranked jobs with reasons. FastAPI and PostgreSQL behind a React and TypeScript front end with RTL, using multilingual embeddings and scikit-learn models. 40 automated tests and a 173-page report.',
+        role: 'Side project · Built end to end',
+        text: 'Upload an Arabic or English CV and get a parsed profile, a quality score, an AI rewrite, a percentage fit across 14 career tracks and ranked jobs with reasons. FastAPI and PostgreSQL behind a React and TypeScript front end with RTL, using multilingual embeddings and scikit-learn models. 40 automated tests.',
         stats: [
           ['14', 'career tracks'],
           ['40', 'automated tests'],
@@ -260,19 +258,31 @@ export const copy = {
       paras: [
         "I'm CTO of Socialist Agency, a social media and digital marketing agency working across Egypt and the GCC. I built the agency's website and the planner the team works in every day.",
         "I'm also CTO of ReachFlex, a call-center and BPO provider. I built its website and its operations hub: staffing, QA, account SLAs, invoicing and reports.",
-        'Most business software ignores right-to-left layouts and local ways of working. I build for Arabic and English from the first screen.',
+        "I'm CTO and technical lead on CheckEngine, a Socialist Agency product for roadside assistance in Egypt, from the Arabic and English apps to deployment and security.",
+        "Most business software ignores right-to-left layouts and local ways of working, so I build for Arabic and English from the first screen. I also launch and grow brands like Zoud, Teqball KSA and Alhout, and I'm building two products of my own on the side.",
       ],
-      facts: ['CTO · Socialist Agency', 'CTO · ReachFlex', 'Arabic + English', 'React · Supabase · Flutter'],
+      facts: [
+        'CTO · Socialist Agency',
+        'CTO · ReachFlex',
+        'CTO · CheckEngine',
+        'Full-stack: web, mobile, desktop',
+        'Arabic + English, RTL first',
+        'Security and production launch',
+        'Brand launches and growth',
+        'AI and automation',
+      ],
     },
     skills: {
       title: 'How I build.',
       groups: [
-        { name: 'Frontend', items: ['React 19', 'TypeScript', 'Vite', 'RTL and i18n (Arabic + English)'] },
+        { name: 'Frontend', items: ['React 19', 'Angular', 'TypeScript', 'Vite', 'RTL and i18n (Arabic + English)'] },
         { name: 'Backend and data', items: ['Supabase (Postgres, auth, realtime, RLS)', 'FastAPI (Python)', '.NET / C#', 'PHP / Laravel'] },
         { name: 'CMS and commerce', items: ['WordPress', 'Elementor', 'WooCommerce and Dokan'] },
         { name: 'AI and data', items: ['scikit-learn', 'Multilingual embeddings', 'CV parsing and ranking'] },
         { name: 'Mobile and desktop', items: ['Flutter', 'Android (Java)', 'Windows (C#, .NET Framework)'] },
-        { name: 'Automation and ops', items: ['n8n', 'Netlify and Cloudflare Workers', 'Docker', 'Web security hardening'] },
+        { name: 'Automation and ops', items: ['n8n', 'Netlify and Cloudflare Workers', 'Docker', 'GitHub Actions'] },
+        { name: 'Growth and content', items: ['Social media strategy', 'Short-form video and photography', 'B2B email campaigns', 'Brand identity and launches'] },
+        { name: 'Security and quality', items: ['Security reviews and hardening', 'CSP, HSTS and rate limits', 'Role-based access and RLS', 'Automated testing'] },
       ],
     },
     archive: {
@@ -298,7 +308,7 @@ export const copy = {
 
   ar: {
     meta: { title: 'باسل إبراهيم | المدير التقني لـ Socialist Agency و ReachFlex' },
-    nav: { work: 'أعمالي', graduation: 'التخرج', about: 'عنّي', archive: 'سابقاً', contact: 'تواصل', toggle: 'EN', toggleLabel: 'التبديل إلى الإنجليزية' },
+    nav: { work: 'أعمالي', side: 'مشاريع جانبية', about: 'عنّي', archive: 'سابقاً', contact: 'تواصل', toggle: 'EN', toggleLabel: 'التبديل إلى الإنجليزية' },
     hero: {
       tags: ['المدير التقني · Socialist Agency', 'المدير التقني · ReachFlex'],
       title: ['شركتان.', 'مدير تقني واحد.', 'وكل شيء بُني داخلياً.'],
@@ -312,7 +322,7 @@ export const copy = {
     sections: {
       build: { title: 'بنيتُها وأُديرها.' },
       grow: { title: 'أطلقتُها ونمّيتُها.' },
-      grad: { title: 'مشاريع التخرج.', sub: 'نظم المعلومات التجارية، 2026/27. منتجان كاملان بنسخ تجريبية حيّة وتقارير مكتوبة.' },
+      side: { title: 'مشاريع جانبية.', sub: 'منتجان بنيتُهما في وقتي الخاص، وأعمل على إطلاقهما تجارياً.' },
     },
     ui: { thumbsLabel: 'اللقطات' },
     projects: {
@@ -330,7 +340,6 @@ export const copy = {
         role: 'المدير التقني · لوحة داخلية',
         text: 'اللوحة التي يعمل عليها الفريق كل يوم: تقويم المحتوى، خط العملاء، الأفكار، الموافقات، الفواتير، الميزانية، الإيرادات، التحليلات ومحرر المدونة. تُضبط الصلاحيات لكل شخص وتظهر التحديثات للجميع مباشرة.',
         tags: ['React 19', 'Supabase auth', 'Realtime'],
-        link: 'socialist.agency/planner',
         note: 'شاشة تسجيل الدخول. المنصة أداة داخلية، لذلك شاشاتها غير عامة.',
         alts: ['شاشة تسجيل الدخول إلى Socialist Planner'],
       },
@@ -348,14 +357,13 @@ export const copy = {
         role: 'المدير التقني · صمّمتُ وبنيتُ',
         text: 'لوحة عمليات للشركة نفسها: جدول التوظيف، سجل الوكلاء، اتفاقيات مستوى الخدمة للحسابات، الجودة ورضا العملاء، خط المبيعات، الفوترة بالمقاعد وتقارير PDF شهرية. والصلاحيات تُضبط لكل مستخدم ولكل صفحة.',
         tags: ['React 19', 'Supabase', 'Row-level security'],
-        link: 'افتح النسخة التجريبية',
         note: 'اللقطات ببيانات تجريبية.',
         alts: ['نظرة عامة على حسابات ReachFlex Ops Hub', 'جدول التوظيف في ReachFlex Ops Hub'],
       },
       checkengine: {
         title: 'CheckEngine',
-        role: 'قائد تقني · الأمان والإطلاق',
-        text: 'مساعدة على الطريق وصيانة سيارات في مصر، بالعربية أولاً، وتنطلق في نوفمبر 2026. العملاء يستخدمون تطبيق ويب وتطبيق Flutter، والفريق يدير الطلبات ومزوّدي الخدمة والفواتير والكاش باك والصلاحيات من لوحة إدارة بالعربية والإنجليزية. نقلتُه إلى الإنتاج على Cloudflare، ونفّذتُ مراجعة الأمان (CSP و HSTS وفحص الرموز والصلاحيات وحدود الطلبات)، وقدتُ توحيد تجربة الويب والجوال، وكتبتُ سياسة الخصوصية والشروط. بُني مع ثلاثة مهندسين آخرين.',
+        role: 'المدير التقني · قائد تقني',
+        text: 'منتج من Socialist Agency: مساعدة على الطريق وصيانة سيارات في مصر، بالعربية أولاً، وتنطلق في نوفمبر 2026. العملاء يستخدمون تطبيق ويب وتطبيق Flutter، والفريق يدير الطلبات ومزوّدي الخدمة والفواتير والكاش باك والصلاحيات من لوحة إدارة بالعربية والإنجليزية. نقلتُه إلى الإنتاج على Cloudflare، ونفّذتُ مراجعة الأمان (CSP و HSTS وفحص الرموز والصلاحيات وحدود الطلبات)، وقدتُ توحيد تجربة الويب والجوال، وكتبتُ سياسة الخصوصية والشروط. بُني مع ثلاثة مهندسين آخرين.',
         stats: [
           ['143+', 'طلب حقيقي حتى الآن'],
           ['2', 'لغتان، والعربية أولاً'],
@@ -409,10 +417,10 @@ export const copy = {
       },
       souqna: {
         title: 'Souqna (سوقنا)',
-        role: 'مشروع تخرج · نظم المعلومات التجارية 2026/27',
-        text: 'سوق ذكي محلي للمشاريع الصغيرة والبائعين من المنازل، بالعربية والإنجليزية. يرفع البائع الجديد صورة هوية وطنية تُحفظ مشفّرة وتُراجع في شاشة قبول أو رفض للمشرف، ثم يُكمل إعداد المتجر في ثلاث خطوات قبل أن يبدأ البيع. مبني على WordPress و WooCommerce و Dokan، مع تقرير مشروع من 186 صفحة.',
+        role: 'مشروع جانبي · بنيتُه بالكامل',
+        text: 'سوق ذكي محلي للمشاريع الصغيرة والبائعين من المنازل، بالعربية والإنجليزية. يرفع البائع الجديد صورة هوية وطنية تُحفظ مشفّرة وتُراجع في شاشة قبول أو رفض للمشرف، ثم يُكمل إعداد المتجر في ثلاث خطوات قبل أن يبدأ البيع. مبني على WordPress و WooCommerce و Dokan.',
         stats: [
-          ['186', 'صفحة في التقرير'],
+          ['3', 'خطوات لإعداد المتجر'],
           ['EN + AR', 'دعم كامل للعربية'],
         ],
         tags: ['WordPress', 'WooCommerce', 'Dokan', 'Docker'],
@@ -422,8 +430,8 @@ export const copy = {
       },
       careerpath: {
         title: 'CareerPath',
-        role: 'مشروع تخرج · نظم المعلومات التجارية 2026/27',
-        text: 'ارفع سيرتك الذاتية بالعربية أو الإنجليزية لتحصل على ملف مستخرج وتقييم للجودة وإعادة صياغة بالذكاء الاصطناعي ونسبة ملاءمة لـ 14 مساراً مهنياً ووظائف مرتبة مع أسبابها. FastAPI و PostgreSQL خلف واجهة React و TypeScript تدعم العربية، مع تضمينات متعددة اللغات ونماذج scikit-learn. 40 اختباراً آلياً وتقرير من 173 صفحة.',
+        role: 'مشروع جانبي · بنيتُه بالكامل',
+        text: 'ارفع سيرتك الذاتية بالعربية أو الإنجليزية لتحصل على ملف مستخرج وتقييم للجودة وإعادة صياغة بالذكاء الاصطناعي ونسبة ملاءمة لـ 14 مساراً مهنياً ووظائف مرتبة مع أسبابها. FastAPI و PostgreSQL خلف واجهة React و TypeScript تدعم العربية، مع تضمينات متعددة اللغات ونماذج scikit-learn. 40 اختباراً آلياً.',
         stats: [
           ['14', 'مساراً مهنياً'],
           ['40', 'اختباراً آلياً'],
@@ -439,20 +447,32 @@ export const copy = {
       title: 'أبني الأدوات، ثم أُشغّل الشركة بها.',
       paras: [
         'أنا المدير التقني لـ Socialist Agency، وكالة سوشيال ميديا وتسويق رقمي تعمل في مصر والخليج. بنيتُ موقع الوكالة والمنصة التي يعمل عليها الفريق كل يوم.',
-        'وأنا أيضاً المدير التقني لـ ReachFlex، مزوّد خدمات مراكز الاتصال و BPO. بنيتُ موقعها ومركز عملياتها: التوظيف والجودة واتفاقيات الخدمة والفوترة والتقارير.',
-        'أغلب برامج الأعمال تتجاهل الواجهات من اليمين لليسار وطريقة العمل المحلية. أنا أبني بالعربية والإنجليزية من أول شاشة.',
+        'وأنا أيضاً المدير التقني لـ ReachFlex، مزوّد خدمات مراكز الاتصال وBPO. بنيتُ موقعها ومركز عملياتها: التوظيف والجودة واتفاقيات الخدمة والفوترة والتقارير.',
+        'وأنا المدير التقني والقائد التقني لـ CheckEngine، منتج من Socialist Agency للمساعدة على الطريق في مصر، من التطبيقات بالعربية والإنجليزية إلى النشر والأمان.',
+        'أغلب برامج الأعمال تتجاهل الواجهات من اليمين لليسار وطريقة العمل المحلية، لذلك أبني بالعربية والإنجليزية من أول شاشة. وأُطلق علاماتٍ مثل Zoud وTeqball KSA وAlhout وأُنمّيها، وأبني منتجين خاصّين بي في وقتي الخاص.',
       ],
-      facts: ['المدير التقني · Socialist Agency', 'المدير التقني · ReachFlex', 'عربي + English', 'React · Supabase · Flutter'],
+      facts: [
+        'المدير التقني · Socialist Agency',
+        'المدير التقني · ReachFlex',
+        'المدير التقني · CheckEngine',
+        'تطوير شامل: ويب وجوال وسطح مكتب',
+        'عربي + English، من اليمين لليسار أولاً',
+        'الأمان والإطلاق للإنتاج',
+        'إطلاق العلامات ونموّها',
+        'ذكاء اصطناعي وأتمتة',
+      ],
     },
     skills: {
       title: 'كيف أبني.',
       groups: [
-        { name: 'الواجهات', items: ['React 19', 'TypeScript', 'Vite', 'RTL و i18n (عربي + إنجليزي)'] },
+        { name: 'الواجهات', items: ['React 19', 'Angular', 'TypeScript', 'Vite', 'RTL و i18n (عربي + إنجليزي)'] },
         { name: 'الخلفية والبيانات', items: ['Supabase (Postgres, auth, realtime, RLS)', 'FastAPI (Python)', '.NET / C#', 'PHP / Laravel'] },
         { name: 'إدارة المحتوى والتجارة', items: ['WordPress', 'Elementor', 'WooCommerce و Dokan'] },
         { name: 'الذكاء الاصطناعي والبيانات', items: ['scikit-learn', 'تضمينات متعددة اللغات', 'تحليل السير الذاتية وترتيبها'] },
         { name: 'الجوال وسطح المكتب', items: ['Flutter', 'Android (Java)', 'Windows (C#, .NET Framework)'] },
-        { name: 'الأتمتة والتشغيل', items: ['n8n', 'Netlify و Cloudflare Workers', 'Docker', 'تقوية أمان الويب'] },
+        { name: 'الأتمتة والتشغيل', items: ['n8n', 'Netlify و Cloudflare Workers', 'Docker', 'GitHub Actions'] },
+        { name: 'النمو والمحتوى', items: ['استراتيجية السوشيال ميديا', 'فيديو قصير وتصوير', 'حملات بريد B2B', 'هوية العلامة وإطلاقها'] },
+        { name: 'الأمان والجودة', items: ['مراجعات وتقوية الأمان', 'CSP و HSTS وحدود الطلبات', 'صلاحيات الأدوار و RLS', 'اختبارات آلية'] },
       ],
     },
     archive: {

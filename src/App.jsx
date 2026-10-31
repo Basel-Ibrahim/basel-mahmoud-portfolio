@@ -59,7 +59,7 @@ function Nav({ t, onToggle }) {
         </a>
         <div className="nav-links">
           <a href="#work">{t.nav.work}</a>
-          <a href="#graduation">{t.nav.graduation}</a>
+          <a href="#side">{t.nav.side}</a>
           <a href="#about">{t.nav.about}</a>
           <a href="#archive">{t.nav.archive}</a>
           <a href="#contact">{t.nav.contact}</a>
@@ -197,9 +197,11 @@ function Project({ meta, p, t }) {
             <li key={tag}>{tag}</li>
           ))}
         </ul>
-        <a className="btn small" href={meta.url} target="_blank" rel="noopener noreferrer">
-          {p.link} ↗
-        </a>
+        {meta.url && (
+          <a className="btn small" href={meta.url} target="_blank" rel="noopener noreferrer">
+            {p.link} ↗
+          </a>
+        )}
       </div>
     </article>
   )
