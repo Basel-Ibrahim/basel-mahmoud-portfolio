@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { copy, projectMeta, archiveMeta, SITE } from './content.js'
+import { copy, projectMeta, archiveMeta, SECTIONS, SITE } from './content.js'
 
 const YEAR = new Date().getFullYear()
 
@@ -37,7 +37,9 @@ export default function App() {
       <main>
         <Hero t={t} />
         <Marquee items={t.marquee} />
-        <Work t={t} />
+        {SECTIONS.map((s) => (
+          <ProjectSection key={s.key} section={s} t={t} />
+        ))}
         <About t={t} />
         <Skills t={t} />
         <Archive t={t} />
@@ -57,6 +59,7 @@ function Nav({ t, onToggle }) {
         </a>
         <div className="nav-links">
           <a href="#work">{t.nav.work}</a>
+          <a href="#graduation">{t.nav.graduation}</a>
           <a href="#about">{t.nav.about}</a>
           <a href="#archive">{t.nav.archive}</a>
           <a href="#contact">{t.nav.contact}</a>
@@ -118,15 +121,19 @@ function Marquee({ items }) {
   )
 }
 
-function Work({ t }) {
+function ProjectSection({ section, t }) {
+  const info = t.sections[section.key]
   return (
-    <section className="work band-white" id="work">
+    <section className={`proj-section ${section.band}`} id={section.id}>
       <div className="wrap">
-        <h2 className="section-title">{t.work.title}</h2>
+        <h2 className="section-title">{info.title}</h2>
+        {info.sub && <p className="section-sub">{info.sub}</p>}
         <div className="cards">
-          {projectMeta.map((meta, i) => (
-            <Project key={meta.id} meta={meta} p={t.work.projects[i]} t={t} />
-          ))}
+          {projectMeta
+            .filter((m) => m.section === section.key)
+            .map((meta) => (
+              <Project key={meta.id} meta={meta} p={t.projects[meta.id]} t={t} />
+            ))}
         </div>
       </div>
     </section>
@@ -145,6 +152,7 @@ function Project({ meta, p, t }) {
           <img
             className={img.fit === 'contain' ? 'contain' : undefined}
             src={`/img/work/${img.file}.webp`}
+            style={img.pos ? { objectPosition: img.pos } : undefined}
             alt={p.alts[active]}
             width={img.w}
             height={img.h}
@@ -152,7 +160,7 @@ function Project({ meta, p, t }) {
           />
         </figure>
         {many && (
-          <div className="thumbs" role="group" aria-label={t.work.thumbsLabel}>
+          <div className="thumbs" role="group" aria-label={t.ui.thumbsLabel}>
             {meta.images.map((m, i) => (
               <button
                 type="button"
@@ -253,7 +261,7 @@ function Archive({ t }) {
             const a = t.archive.items[i]
             return (
               <article key={meta.id} className="arc box" style={{ '--accent': meta.accent }}>
-                <img src={`/img/archive/${meta.file}.webp`} alt={a.alt} loading="lazy" />
+                <img src={`/img/archive/${meta.file}.webp`} alt={a.alt} width="900" height="1200" loading="lazy" />
                 <div className="arc-body">
                   <span className="role" dir="ltr">
                     {a.platform}
