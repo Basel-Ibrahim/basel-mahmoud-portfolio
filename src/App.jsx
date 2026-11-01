@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { copy, projectMeta, archiveMeta, SECTIONS, SITE } from './content.js'
 
 const YEAR = new Date().getFullYear()
+const BASE = import.meta.env.BASE_URL
 
 function initialLang() {
   try {
@@ -98,7 +99,7 @@ function Hero({ t }) {
           </div>
         </div>
         <figure className="hero-photo">
-          <img src="/img/basel.jpg" alt={h.photoAlt} width="800" height="1200" fetchPriority="high" />
+          <img src={`${BASE}img/basel.jpg`} alt={h.photoAlt} width="800" height="1200" fetchPriority="high" />
           <span className="sticker s1">{h.stickers[0]}</span>
           <span className="sticker s2">{h.stickers[1]}</span>
         </figure>
@@ -151,7 +152,7 @@ function Project({ meta, p, t }) {
         <figure className="shot">
           <img
             className={img.fit === 'contain' ? 'contain' : undefined}
-            src={`/img/work/${img.file}.webp`}
+            src={`${BASE}img/work/${img.file}.webp`}
             style={img.pos ? { objectPosition: img.pos } : undefined}
             alt={p.alts[active]}
             width={img.w}
@@ -170,7 +171,7 @@ function Project({ meta, p, t }) {
                 aria-label={p.alts[i]}
                 onClick={() => setActive(i)}
               >
-                <img src={`/img/work/${m.file}.webp`} alt="" width="96" height="60" loading="lazy" />
+                <img src={`${BASE}img/work/${m.file}.webp`} alt="" width="96" height="60" loading="lazy" />
               </button>
             ))}
           </div>
@@ -263,7 +264,7 @@ function Archive({ t }) {
             const a = t.archive.items[i]
             return (
               <article key={meta.id} className="arc box" style={{ '--accent': meta.accent }}>
-                <img src={`/img/archive/${meta.file}.webp`} alt={a.alt} width="900" height="1200" loading="lazy" />
+                <img src={`${BASE}img/archive/${meta.file}.webp`} alt={a.alt} width="900" height="1200" loading="lazy" />
                 <div className="arc-body">
                   <span className="role" dir="ltr">
                     {a.platform}
