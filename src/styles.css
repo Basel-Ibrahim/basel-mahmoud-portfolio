@@ -1,15 +1,21 @@
+/* Hallmark · checked: 2026-11-01 · genre: editorial (inferred)
+ * floor: 0 FAIL · fixed: 20, 48, 67, 7b, 18, F4, 26b · structural: spacing scale (24b) and layout printed, not rebuilt
+ * built: the project · redesign: polish · v2.0.0 */
+/* Hallmark · waive 38iii · one mark word in the hero h1 and nowhere else on the page · the highlighted One CTO line is the portfolio's single hero statement and stays */
 :root {
   --ink: #111;
-  --paper: #fff;
+  --paper: #fffbee;
   --yellow: #ffc93c;
   --mint: #7cf3c0;
   --coral: #ff8a7a;
   --blue: #8fb8ff;
   --lilac: #c9b2ff;
+  --font-body: 'Bricolage Grotesque', 'Cairo', system-ui, sans-serif;
+  --font-ar: 'Cairo', 'Bricolage Grotesque', system-ui, sans-serif;
   --sx: 1;
   --gutter-l: max(16px, env(safe-area-inset-left, 0px));
   --gutter-r: max(16px, env(safe-area-inset-right, 0px));
-  font-family: 'Bricolage Grotesque', 'Cairo', system-ui, sans-serif;
+  font-family: var(--font-body);
   color-scheme: light;
 }
 [dir='rtl'] {
@@ -22,9 +28,11 @@
   box-sizing: border-box;
 }
 html {
+  overflow-x: clip;
   scroll-behavior: smooth;
 }
 body {
+  overflow-x: clip;
   margin: 0;
   background: var(--yellow);
   color: var(--ink);
@@ -32,7 +40,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 html[lang='ar'] body {
-  font-family: 'Cairo', 'Bricolage Grotesque', system-ui, sans-serif;
+  font-family: var(--font-ar);
 }
 html[lang='ar'] * {
   letter-spacing: 0 !important;
@@ -129,8 +137,6 @@ section {
   display: inline-block;
   font-weight: 800;
   font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
   text-decoration: none;
   padding: 13px 22px;
   background: var(--mint);
@@ -145,12 +151,25 @@ section {
   box-shadow: calc(var(--sx) * 2px) 2px 0 var(--ink);
 }
 .btn.dark {
-  background: var(--ink);
-  color: var(--paper);
-  box-shadow: calc(var(--sx) * 4px) 4px 0 var(--coral);
+  background: transparent;
+  color: var(--ink);
+  box-shadow: none;
 }
 .btn.dark:hover {
-  box-shadow: calc(var(--sx) * 2px) 2px 0 var(--coral);
+  background: var(--paper);
+  box-shadow: none;
+}
+.btn:active,
+.thumb:active,
+.lang-btn:active {
+  transform: translate(calc(var(--sx) * 4px), 4px);
+  box-shadow: none;
+}
+.btn:disabled,
+.lang-btn:disabled,
+.thumb:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 .btn.small {
   font-size: 0.82rem;
@@ -201,8 +220,6 @@ section {
   box-shadow: calc(var(--sx) * 5px) 5px 0 var(--ink);
   font-weight: 700;
   font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 .nav-logo {
   font-size: 1.15rem;
@@ -229,7 +246,7 @@ section {
   border: 2px solid var(--ink);
   border-radius: 8px;
   padding: 2px 12px;
-  font-family: 'Cairo', sans-serif;
+  font-family: var(--font-ar);
   font-weight: 800;
   text-transform: none;
   letter-spacing: 0;
@@ -310,8 +327,6 @@ html[lang='ar'] .hero h1 {
   position: absolute;
   font-weight: 800;
   font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
   border: 3px solid var(--ink);
   padding: 6px 10px;
   box-shadow: calc(var(--sx) * 4px) 4px 0 var(--ink);
@@ -346,6 +361,9 @@ html[lang='ar'] .hero h1 {
 .marquee-track {
   display: inline-flex;
   animation: slide 40s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
 }
 .marquee-track span {
   flex: none;
@@ -452,8 +470,6 @@ html[lang='ar'] .hero h1 {
   padding: 2px 12px;
   font-size: 0.78rem;
   font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
 .proj-body h3 {
   font-size: clamp(1.7rem, 3.4vw, 2.4rem);
@@ -572,9 +588,19 @@ html[lang='ar'] .hero h1 {
 .skill li {
   font-weight: 600;
   font-size: 0.95rem;
-  padding-inline-start: 12px;
-  border-inline-start: 4px solid var(--blue);
+  padding-inline-start: 18px;
+  position: relative;
   overflow-wrap: anywhere;
+}
+.skill li::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  background: var(--blue);
+  border: 2px solid var(--ink);
 }
 
 /* Archive */
@@ -669,8 +695,6 @@ html[lang='ar'] .hero h1 {
 }
 .email span {
   font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
   opacity: 0.75;
 }
 
@@ -718,7 +742,6 @@ html[lang='ar'] .hero h1 {
     width: 100%;
     gap: 6px 12px;
     font-size: 0.72rem;
-    letter-spacing: 0.03em;
   }
   .hero-photo {
     width: min(100%, 280px);
