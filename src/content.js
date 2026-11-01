@@ -118,7 +118,7 @@ export const archiveMeta = [{ id: 'solar-win', file: 'solar-windows', accent: '#
 export const copy = {
   en: {
     meta: { title: 'Basel Ibrahim | CTO, Socialist Agency & ReachFlex' },
-    nav: { work: 'Work', side: 'Side projects', about: 'About', archive: 'Earlier', contact: 'Contact', toggle: 'عربي', toggleLabel: 'Switch to Arabic' },
+    nav: { name: 'Basel Ibrahim', work: 'Work', side: 'Side projects', about: 'About', archive: 'Earlier', contact: 'Contact', toggle: 'عربي', toggleLabel: 'Switch to Arabic' },
     hero: {
       tags: ['CTO · Socialist Agency', 'CTO · ReachFlex'],
       title: ['Two companies.', 'One CTO.', 'Built in-house.'],
@@ -308,7 +308,7 @@ export const copy = {
 
   ar: {
     meta: { title: 'باسل إبراهيم | المدير التقني لـ Socialist Agency و ReachFlex' },
-    nav: { work: 'أعمالي', side: 'مشاريع جانبية', about: 'عنّي', archive: 'سابقاً', contact: 'تواصل', toggle: 'EN', toggleLabel: 'التبديل إلى الإنجليزية' },
+    nav: { name: 'باسل إبراهيم', work: 'أعمالي', side: 'مشاريع جانبية', about: 'عنّي', archive: 'سابقاً', contact: 'تواصل', toggle: 'EN', toggleLabel: 'التبديل إلى الإنجليزية' },
     hero: {
       tags: ['المدير التقني · Socialist Agency', 'المدير التقني · ReachFlex'],
       title: ['شركتان.', 'مدير تقني واحد.', 'وكل شيء بُني داخلياً.'],

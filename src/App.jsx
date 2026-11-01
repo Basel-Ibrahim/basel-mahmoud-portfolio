@@ -55,8 +55,8 @@ function Nav({ t, onToggle }) {
   return (
     <header className="nav-wrap">
       <nav className="nav box" aria-label="Main">
-        <a className="nav-logo" href="#top" aria-label="Basel Ibrahim">
-          B.I
+        <a className="nav-logo" href="#top" >
+          {t.nav.name}
         </a>
         <div className="nav-links">
           <a href="#work">{t.nav.work}</a>
